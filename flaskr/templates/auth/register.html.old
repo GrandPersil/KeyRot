@@ -1,0 +1,30 @@
+{% extends "auth.html" %}
+
+{% block title %}Page de connexion{% endblock %}
+    
+{% block content %}
+    <form class="form-signin bg-white bg" method="POST">
+       <img class="mb-4" src="{{ url_for('static', filename='img/Logo.png') }}" alt="" width="72" height="72">
+       <h1 class="h3 mb-3 font-weight-normal">Veuillez vous inscrire</h1>
+       
+        {% for message in get_flashed_messages() %}
+            <div class="alert alert-danger" role="alert">{{ message }}</div>
+        {% endfor %}
+       
+       <label for="inputEmail" class="sr-only">Adresse e-mail</label>
+       <input type="email" id="inputEmail" name="email" class="form-control mb-2" placeholder="Adresse e-mail" required autofocus>
+       <label for="inputUsername" class="sr-only">Nom d'utilisateur'</label>
+       <input type="text" id="inputUsername" name="username" class="form-control mb-2" placeholder="Nom d'utilisateur'" required>
+
+       <label for="inputPassword" class="sr-only">Mot de passe</label>
+       <input type="password" id="inputPassword" name="password" class="form-control mb-2" placeholder="Mot de passe" required>
+       <label for="inputPassword2" class="sr-only">Mot de passe</label>
+       <input type="password" id="inputPassword2" name="vpassword" class="form-control mb-2" placeholder="Retaper le mot de passe" required>
+
+       <button class="btn btn-lg btn-primary btn-block" type="submit">S'incrire'</button>
+       <hr>
+       <div class="checkbox mb-3">
+          <a href="{{ url_for('auth.login') }}"> Se connecter</a>
+       </div>
+    </form>
+{% endblock %}
